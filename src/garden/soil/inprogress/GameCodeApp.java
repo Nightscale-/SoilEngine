@@ -28,17 +28,17 @@ public abstract class GameCodeApp {
 	
 	protected int Modal(IScreenElement element, int defaultAnswer)
 	{
-		
+		return 0;
 	}
 	
 	protected int pumpUntilMessage(UnsignedInteger msgEnd, UnsignedInteger param, long longParam)
 	{
-		
+		return 0;
 	}
 	
 	protected int eatSpecificMessages(UnsignedInteger msgType, Map<String, Object> lParam, Map<String, Object> wParam)
 	{
-		
+		return 0;
 	}
 	
 	public abstract String getGameTitle();
@@ -96,12 +96,12 @@ public abstract class GameCodeApp {
 	
 	public String CDCheckFile()
 	{
-		
+		return "";
 	}
 	
 	public boolean fileExistes(String searchFile)
 	{
-		
+		return false;
 	}
 	
 	
@@ -120,7 +120,7 @@ public abstract class GameCodeApp {
 	
 	public int getExitCode()
 	{
-		
+		return 0;
 	}
 	
 	public boolean isRunning()

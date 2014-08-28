@@ -12,6 +12,6 @@ public class Resource {
 	
 	public ResourceHandle createHandle(InputStream input, long size, ResourceCache cache)
 	{
-		
+		return null;
 	}
 }
