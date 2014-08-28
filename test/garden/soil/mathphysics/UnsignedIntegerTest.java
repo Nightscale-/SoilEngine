@@ -18,8 +18,8 @@ public class UnsignedIntegerTest {
 	public void testMaxLongValue()
 	{
 		UnsignedInteger toTest = new UnsignedInteger(0xffffffffffL);
-		assertEquals("Max positive int value expected", 
-				0x7fffffff, toTest.intValue());
+		assertEquals("Max positive long value expected", 
+				0xffffffffL, toTest.longValue());
 	}
 	
 	@Test
@@ -83,7 +83,7 @@ public class UnsignedIntegerTest {
 	{
 		UnsignedInteger lhs = new UnsignedInteger(0xffffffff);
 		UnsignedInteger rhs = new UnsignedInteger(2);
-		assertEquals(0xfffffffe, lhs.multiply(rhs));
+		assertEquals(0xfffffffeL, lhs.multiply(rhs));
 	}
 
 	@Test

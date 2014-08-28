@@ -2,7 +2,7 @@ package garden.soil.mathphysics;
 
 public class UnsignedInteger extends Number{
 	
-	private static long INT_MASK = 0xffffffff;
+	private static final long INT_MASK = 0xffffffffL;
 	private static final long serialVersionUID = 964396679758572473L;
 	private static final long MOD_MASK = 0x100000000L;
 	private long value;
