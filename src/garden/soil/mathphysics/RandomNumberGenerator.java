@@ -1,5 +1,7 @@
 package garden.soil.mathphysics;
 
+import java.util.Arrays;
+
 public class RandomNumberGenerator {
 	
 	private static final int CMATH_N = 624;
@@ -19,6 +21,7 @@ public class RandomNumberGenerator {
 	{
 		rSeed = new UnsignedInteger(1);
 		mt = new UnsignedLong[CMATH_N];
+		Arrays.fill(mt, UnsignedLong.valueOf(0));
 		mti = CMATH_N+1;
 	}
 	
