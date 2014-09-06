@@ -1,6 +1,6 @@
-package garden.soil.unfiled;
+package garden.soil.processes;
 
-public abstract class Process {
+public abstract class AProcess {
 
 	public enum ProcessType
 	{
@@ -14,25 +14,26 @@ public abstract class Process {
 		PROC_INTERPOLATOR
 	};
 	
-	public static final int PROCESS_FLAG_ATTACHED = 0x00000001;
-	
 	protected ProcessType type;
 	protected boolean kill;
 	protected boolean active;
 	protected boolean paused;
-	protected boolean initalUpdate;
-	protected Process next;
+	protected boolean amInitialized;
+	protected boolean amAttached;
+	protected AProcess next;
 	
-	private int processFlags;
+	public abstract void togglePause();
+	public abstract void onInitalize();
+	public abstract void onUpdate(int deltaMillisec);
 	
-	public Process(ProcessType newType)
+	public AProcess(ProcessType newType)
 	{
 		type = newType;
 		kill = false;
 		active = true;
-		processFlags = 0;
+		amAttached = false;
 		paused = false;
-		initalUpdate = true;
+		amInitialized = false;
 	}
 	
 	public boolean isDead()
@@ -67,23 +68,12 @@ public abstract class Process {
 	
 	public boolean isAttached()
 	{
-		if((processFlags & PROCESS_FLAG_ATTACHED) == 1)
-		{
-			return true;
-		}
-		return false;
+		return amAttached;
 	}
 	
 	public void setAttached(boolean newAttached)
 	{
-		if(newAttached)
-		{
-			processFlags = processFlags | PROCESS_FLAG_ATTACHED;
-		}
-		else
-		{
-			processFlags = processFlags & ~PROCESS_FLAG_ATTACHED;
-		}
+		amAttached = newAttached;
 	}
 	
 	public boolean isPaused()
@@ -91,31 +81,18 @@ public abstract class Process {
 		return paused;
 	}
 	
-	public abstract void togglePause();
-	
 	public boolean isInitalized()
 	{
-		return !initalUpdate;
+		return amInitialized;
 	}
 	
-	public Process getNext()
+	public AProcess getNext()
 	{
 		return next;
 	}
 	
-	public void setNext(Process newNext)
+	public void setNext(AProcess newNext)
 	{
 		next = newNext;
 	}
-	
-	public void onUpdate(int deltaMillisec)
-	{
-		if(initalUpdate)
-		{
-			onInitalize();
-			initalUpdate = false;
-		}
-	}
-	
-	public abstract void onInitalize();
 }

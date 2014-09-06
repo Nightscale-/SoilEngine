@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import garden.soil.unfiled.ActorParameters;
-import garden.soil.unfiled.ProcessManager;
-import garden.soil.unfiled.Process;
 import garden.soil.mathphysics.RandomNumberGenerator;
 import garden.soil.mathphysics.UnsignedInteger;
+import garden.soil.processes.AProcess;
+import garden.soil.processes.ProcessManager;
 import garden.soil.interfaces.IActor;
 import garden.soil.interfaces.IGameLogic;
 import garden.soil.interfaces.IGamePhysics;
@@ -303,7 +303,7 @@ public abstract class BaseGameLogic implements IGameLogic {
 		return physics;
 	}
 	
-	public void attachProcess(Process newProcess)
+	public void attachProcess(AProcess newProcess)
 	{
 		if(processManager != null)
 		{

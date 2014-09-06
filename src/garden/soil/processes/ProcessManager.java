@@ -1,29 +1,29 @@
-package garden.soil.unfiled;
+package garden.soil.processes;
 
-import garden.soil.unfiled.Process.ProcessType;
+import garden.soil.processes.AProcess.ProcessType;
 
 import java.util.ArrayList;
 
 public class ProcessManager {
 
-	protected ArrayList<Process> processList;
+	protected ArrayList<AProcess> processList;
 	
 	public ProcessManager()
 	{
-		processList = new ArrayList<Process>();
+		processList = new ArrayList<AProcess>();
 	}
 	
 	public void updateProcesses(int deltaMillisec)
 	{
 		int index = 0;
-		Process current;
+		AProcess current;
 		while(index < processList.size())
 		{
 			current = processList.get(index);
 			if(current.isDead())
 			{
-				Process next = current.getNext();
-				if(next == null)
+				AProcess next = current.getNext();
+				if(next != null)
 				{
 					current.setNext(null);
 					attach(next);
@@ -42,7 +42,7 @@ public class ProcessManager {
 	{
 		for(int index = 0; index< processList.size(); index++)
 		{
-			Process toTest = processList.get(index);
+			AProcess toTest = processList.get(index);
 			if(toTest.getType() == type && (!toTest.isDead() || toTest.getNext() != null))
 			{
 				return true;
@@ -51,7 +51,7 @@ public class ProcessManager {
 		return false;
 	}
 	
-	public void attach(Process newProcess)
+	public void attach(AProcess newProcess)
 	{
 		processList.add(newProcess);
 		newProcess.setAttached(true);
@@ -70,7 +70,7 @@ public class ProcessManager {
 		}
 	}
 	
-	private void detach(Process toRemove)
+	private void detach(AProcess toRemove)
 	{
 		processList.remove(toRemove);
 		toRemove.setAttached(false);
